@@ -105,123 +105,197 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Insert the following products into the Products table:
+
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
 
 ```sql
--- Paste your SQL code below for Question 1
+INSERT INTO Products(Name,Category,Price,Stock)
+VALUES('Smartphone','Electronics',800,150),('Headphones','Accessories',200,300);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="482" height="247" alt="image" src="https://github.com/user-attachments/assets/36ea2518-e5a1-4ec6-9e34-6db704e2d03a" />
 
 **Question 2**
 ---
--- Paste Question 2 here
+create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
 
 ```sql
--- Paste your SQL code below for Question 2
+CREATE TABLE jobs(
+job_id INTEGER,
+job_title CHAR,
+min_salary INTEGER default(8000),
+max_salary INTEGER default(NULL)
+)
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="528" height="225" alt="image" src="https://github.com/user-attachments/assets/1308b300-7971-4163-840d-52a1ba580ff2" />
 
 **Question 3**
 ---
--- Paste Question 3 here
-
-```sql
--- Paste your SQL code below for Question 3
+Create a table named Shipments with the following constraints:
+ShipmentID as INTEGER should be the primary key.
+ShipmentDate as DATE.
+SupplierID as INTEGER should be a foreign key referencing Suppliers(SupplierID).
+OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
+```
+sql
+CREATE TABLE Shipments(
+ShipmentID INTEGER PRIMARY KEY,
+ShipmentDate DATE,
+SupplierID INTEGER,
+OrderId INTEGER,
+FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID),
+FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) 
+)
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="377" height="130" alt="image" src="https://github.com/user-attachments/assets/8335d412-2a30-4157-a059-b70334b8baf2" />
 
 **Question 4**
 ---
--- Paste Question 4 here
-
-```sql
--- Paste your SQL code below for Question 4
+Write an SQL query to add a new column salary of type INTEGER to the Employees table, with a CHECK constraint that ensures the value in this column is greater than 0.
+```
+sql
+ALTER TABLE employees ADD COLUMN salary INTEGER CHECK (salary>0);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="682" height="177" alt="image" src="https://github.com/user-attachments/assets/56063dd1-3553-4f4d-b769-47649461c4a1" />
 
 **Question 5**
 ---
--- Paste Question 5 here
+Insert the below data into the Customers table, allowing the City and ZipCode columns to take their default values.
 
-```sql
--- Paste your SQL code below for Question 5
+CustomerID  Name          Address
+----------  ------------  ----------
+304         Peter Parker  Spider St      
+
+Note: The City and ZipCode columns will use their default values.
+```
+sql
+INSERT INTO Customers(CustomerID,Name,Address) VALUES(304,'Peter Parker','Spider St')
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="382" height="212" alt="image" src="https://github.com/user-attachments/assets/c0c00dfc-7cea-42c3-b5cc-f2658b5afdff" />
 
 **Question 6**
 ---
--- Paste Question 6 here
-
-```sql
--- Paste your SQL code below for Question 6
+Create a table named Products with the following constraints:
+ProductID as INTEGER should be the primary key.
+ProductName as TEXT should be unique and not NULL.
+Price as REAL should be greater than 0.
+StockQuantity as INTEGER should be non-negative.
+```
+sql
+CREATE TABLE Products(
+ProductID INTEGER PRIMARY KEY,
+ProductName TEXT UNIQUE NOT NULL,
+Price REAL,
+StockQuantity INTEGER,
+CHECK(Price>0),
+CHECK(StockQuantity>=0)
+)
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="525" height="172" alt="image" src="https://github.com/user-attachments/assets/165e9b5c-047b-4d82-8950-7451c2ded8d8" />
 
 **Question 7**
 ---
--- Paste Question 7 here
-
-```sql
--- Paste your SQL code below for Question 7
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should set NULL on updates and deletes.
+item_desc and rate should not accept NULL.
+```
+sql
+CREATE TABLE item(
+item_id TEXT PRIMARY KEY,
+item_desc TEXT NOT NULL,
+rate INTEGER NOT NULL,
+icom_id CHAR(4),
+FOREIGN KEY (icom_id) REFERENCES company(com_id)
+ON UPDATE SET NULL 
+ON DELETE SET NULL
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="482" height="245" alt="image" src="https://github.com/user-attachments/assets/f333dd44-e392-484c-ad1d-35edbf1ba919" />
 
 **Question 8**
 ---
--- Paste Question 8 here
+Insert all books from Out_of_print_books into Books
 
-```sql
--- Paste your SQL code below for Question 8
+Table attributes are ISBN, Title, Author, Publisher, YearPublished
+```
+sql
+INSERT INTO Books SELECT * FROM Out_of_print_books;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="768" height="182" alt="image" src="https://github.com/user-attachments/assets/46245589-535c-4495-aeda-fcfd3f9c292a" />
 
 **Question 9**
 ---
--- Paste Question 9 here
+Create a table named Reviews with the following columns:
 
-```sql
--- Paste your SQL code below for Question 9
+ReviewID as INTEGER
+ProductID as INTEGER
+Rating as REAL
+ReviewText as TEXT
+
+```
+sql
+CREATE TABLE Reviews(
+ReviewID INTEGER,
+ProductID INTEGER,
+Rating REAL,
+ReviewText TEXT
+)
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="683" height="290" alt="image" src="https://github.com/user-attachments/assets/d8a912a5-64d5-4a1b-aa5f-08f404dee570" />
 
 **Question 10**
 ---
--- Paste Question 10 here
-
+Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 ```sql
--- Paste your SQL code below for Question 10
+CREATE TABLE Orders(
+OrderID INTEGER,
+OrderDate DATE NOT NULL,
+CustomerID INTEGER,
+FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+)
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="342" height="181" alt="image" src="https://github.com/user-attachments/assets/bc8b42b5-ef21-4ef7-a754-40f849b9e030" />
 
 
 ## RESULT
