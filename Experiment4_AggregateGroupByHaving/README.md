@@ -38,123 +38,200 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+<img width="877" height="265" alt="image" src="https://github.com/user-attachments/assets/9e474a56-3e88-4816-b2d7-068f1d8040e9" />
 
 ```sql
--- Paste your SQL code below for Question 1
+SELECT DoctorID, COUNT(*) AS TotalAppointments
+FROM Appointments
+GROUP BY DoctorID;
 ```
 
 **Output:**
 
-![Output1](output.png)
+
+<img width="640" height="543" alt="image" src="https://github.com/user-attachments/assets/ebdeb709-d144-48bf-91cb-1117515680e5" />
 
 **Question 2**
 ---
--- Paste Question 2 here
+What is the total number of appointments scheduled for each day?
+
+Table: Appointments
+
+name                 type
+-------------------  ----------
+AppointmentID        INTEGER
+PatientID            INTEGER
+DoctorID             INTEGER
+AppointmentDateTime  DATETIME
+Purpose              TEXT
+Status               TEXT
 
 ```sql
--- Paste your SQL code below for Question 2
+SELECT DATE(AppointmentDateTime) AS AppointmentDate, COUNT(*) AS TotalAppointments FROM Appointments
+GROUP BY DATE(AppointmentDateTime)
+ORDER BY AppointmentDate;
 ```
 
 **Output:**
 
-![Output2](output.png)
+
+<img width="721" height="556" alt="image" src="https://github.com/user-attachments/assets/7c613f78-f6ae-40b9-972c-cfd734bc5037" />
 
 **Question 3**
 ---
--- Paste Question 3 here
+
+<img width="875" height="245" alt="image" src="https://github.com/user-attachments/assets/3708f7c1-49e9-45cd-8bb9-0aa1e7a93b53" />
 
 ```sql
--- Paste your SQL code below for Question 3
+SELECT Specialty, COUNT(*) AS TotalDoctors FROM Doctors
+GROUP BY Specialty
+ORDER BY Specialty;
 ```
 
 **Output:**
 
-![Output3](output.png)
+
+<img width="687" height="607" alt="image" src="https://github.com/user-attachments/assets/957f342b-ab8e-4707-9dbf-05d69ff6a6bd" />
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to find the average length of email addresses (in characters):
 
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+city        TEXT
+email       TEXT
+phone       INTEGER
 ```sql
--- Paste your SQL code below for Question 4
+SELECT AVG(LENGTH(email)) AS avg_email_length
+FROM customer;
 ```
 
 **Output:**
 
-![Output4](output.png)
+
+<img width="492" height="238" alt="image" src="https://github.com/user-attachments/assets/828e24cc-3566-47bc-b6e0-5cd61d0381c0" />
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to find the youngest employee in the company?
 
+Table: employee
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
 ```sql
--- Paste your SQL code below for Question 5
+SELECT name AS Employee_Name, age AS Age FROM employee
+WHERE age=(SELECT MIN(age) FROM employee) LIMIT 1;
 ```
 
 **Output:**
 
-![Output5](output.png)
+
+<img width="590" height="237" alt="image" src="https://github.com/user-attachments/assets/0c92abc3-5059-46c5-a43b-8d6c0f200f78" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to calculate total purchase amount of all orders. Return total purchase amount.
 
+Sample table: orders
+
+ord_no      purch_amt   ord_date    customer_id  salesman_id
+
+----------  ----------  ----------  -----------  -----------
+
+70001       150.5       2012-10-05  3005         5002
+
+70009       270.65      2012-09-10  3001         5005
+
+70002       65.26       2012-10-05  3002         5001
 ```sql
--- Paste your SQL code below for Question 6
+SELECT SUM(purch_amt) AS TOTAL
+FROM orders;
 ```
 
 **Output:**
 
-![Output6](output.png)
+
+<img width="357" height="252" alt="image" src="https://github.com/user-attachments/assets/029cb74c-16ce-4660-b002-d7e655a307a0" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to find the total number of unique cities in the customer table?
 
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+city        TEXT
+email       TEXT
+phone       INTEGER
 ```sql
--- Paste your SQL code below for Question 7
+SELECT COUNT(DISTINCT city) AS unique_cities
+FROM customer;
 ```
 
 **Output:**
 
-![Output7](output.png)
+
+<img width="393" height="247" alt="image" src="https://github.com/user-attachments/assets/6645162a-c27a-4f9b-a10d-260493f8d6a9" />
 
 **Question 8**
 ---
--- Paste Question 8 here
+
+<img width="806" height="321" alt="image" src="https://github.com/user-attachments/assets/20af72a5-7dd9-416a-8b18-46dfa299cc9c" />
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT city, SUM(income) AS Income FROM employee
+GROUP BY City HAVING SUM(income)>200000;
 ```
 
 **Output:**
 
-![Output8](output.png)
+
+<img width="535" height="457" alt="image" src="https://github.com/user-attachments/assets/efa03965-acb7-4f99-a872-ad70d0e307a8" />
 
 **Question 9**
 ---
--- Paste Question 9 here
+
+<img width="831" height="286" alt="image" src="https://github.com/user-attachments/assets/c28ab864-d558-43bd-ae5a-6d2f55499fe8" />
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT (age/5)*5 AS age_group, MIN(salary)
+FROM customer1
+GROUP BY (age/5)*5
+HAVING MIN(salary)<2000;
 ```
 
 **Output:**
 
-![Output9](output.png)
+
+<img width="562" height="277" alt="image" src="https://github.com/user-attachments/assets/a81643f0-1bf8-4f90-97b8-c55c35c949b8" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+
+<img width="807" height="296" alt="image" src="https://github.com/user-attachments/assets/e33c7e4f-5136-4ae1-97f4-878d107189d5" />
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT address, SUM(salary) FROM customer1 GROUP BY address HAVING SUM(salary)>2000;
 ```
 
 **Output:**
 
-![Output10](output.png)
+
+<img width="541" height="420" alt="image" src="https://github.com/user-attachments/assets/f67ae228-a409-4271-9289-4ef1bfa0d793" />
 
 
 ## RESULT
